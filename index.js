@@ -17,9 +17,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 const userCollection = require("./model/schema");
-// app.get("/", (req, res) => {
-//   res.send("<h1>Welcome to backend project</h1>");
-// });
 
 app.get("/", (req, res) => {
   res.render("login");
