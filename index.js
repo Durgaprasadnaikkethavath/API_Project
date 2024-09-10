@@ -4,6 +4,9 @@ const app = express();
 const port = 3900;
 const path = require("path");
 const bcrypt = require("bcrypt");
+const cors = require("cors");
+
+app.use(cors());
 
 require("./db/conn");
 
@@ -19,13 +22,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const userCollection = require("./model/schema");
 
-app.get("/", (req, res) => {
-  res.sendFile(filePath);
-});
-
 // app.get("/", (req, res) => {
-//   res.render("login");
+//   res.sendFile(filePath);
 // });
+
+app.get("/", (req, res) => {
+  res.render("login");
+});
 
 app.get("/signup", (req, res) => {
   res.render("signup");
