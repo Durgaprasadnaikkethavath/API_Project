@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
+const filePath = path.join(__dirname, "index.html");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -19,8 +20,12 @@ app.use(express.static(path.join(__dirname, "public")));
 const userCollection = require("./model/schema");
 
 app.get("/", (req, res) => {
-  res.render("login");
+  res.sendFile(filePath);
 });
+
+// app.get("/", (req, res) => {
+//   res.render("login");
+// });
 
 app.get("/signup", (req, res) => {
   res.render("signup");
